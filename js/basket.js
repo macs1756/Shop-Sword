@@ -1,7 +1,10 @@
 
 import {btn} from './index.js';
+import {DRAWER_PUSH} from './index.js';
 import {SERVER} from  './server.js';
+import {HeaderTotalPrice} from './totalPrice.js';
 
+//localStorage.clear();
 
 
 let x = JSON.parse(localStorage.getItem('products'));
@@ -44,6 +47,7 @@ btn.forEach(item=>{
 	
 	localStorage.setItem('products', JSON.stringify(storage));
 	renderDrawer();
+	HeaderTotalPrice();
 	storage = null;
 
 	
@@ -69,10 +73,12 @@ export function renderDrawer(){
 				arr.push(i);
 			}
 		}
+
+		
 		if(arr.length > 0){
-
+			DRAWER_PUSH.removeAttribute('disabled');
 			let allItemsDrawer = '';
-
+			
 			arr.forEach(id=>{
 				allItemsDrawer += `
 				<div class="drawer__item">
@@ -83,21 +89,26 @@ export function renderDrawer(){
 								<button class="count__num">1</button>
 								<button class="count__more">+</button>
 							</div>
-							<p>${SERVER[id].price} Грн</p>
-							<span>X</span>
+							<p><span data-price='${SERVER[id].price}' class='drawer__price'>${SERVER[id].price}</span> Грн</p>
+							<span data-id='${SERVER[id].id}' class='drawer__delete-item'>X</span>
 				</div>
 				`;
 			});	
+
 			DRAWER_INSERT.innerHTML = allItemsDrawer;
 			
-		}else{
-			DRAWER_INSERT.innerHTML = `
-			<div>Корзина пуста</div>
-			`;
+			
 		}
 		
 		
 	});	
+	if(arr.length == 0){
+		DRAWER_INSERT.innerHTML = `
+		<div class='drawer__empty'>Корзина пуста</div>
+		`;
+		DRAWER_PUSH.setAttribute('disabled', '');
+	}
 }
 
 renderDrawer();
+HeaderTotalPrice();

@@ -17,7 +17,7 @@
 			<div>LOGO</div>
 
 			<div class="basket" id="basket">
-				<span>16 500</span>
+				<span class="header__total-price">0</span>
 				<img src="img/basket.png" alt="basket">
 			</div>
 		</div>
@@ -39,11 +39,20 @@
 			<div class="drawer__items">
 				
 			</div>
-
-			<button class="drawer__btn">Відправити</button>
+			<div class="drawer__bottom">
+				<div><span class="drawer__bottom-price">1000</span> Грн</div>
+				<button class="drawer__btn">Відправити</button>
+			</div>
+		
 		</div>
 	</div>
-		
+	<div class="drawer__push">
+		<div class="drawer__push-body">
+			<img src="./img/check.svg" alt="check">
+			<span>Ваша заявка прийнята, в найблищий час з вами звяжеться менеджер.</span>
+		</div>
+	</div>
+	
 
 
 </div>
@@ -51,5 +60,6 @@
 	<script type="module" src="js/basket.js"></script>
 	<script type="module" src="js/index.js"></script>
 	<script type="module" src="js/drawer.js"></script>
+	<script type="module" src="js/totalPrice.js"></script>
 </body>
 </html>

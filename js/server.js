@@ -32,3 +32,4 @@ export const SERVER = [
 		price: '777',
 	},
 ];
+

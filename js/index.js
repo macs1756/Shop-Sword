@@ -1,7 +1,11 @@
 
-
+import {HeaderTotalPrice} from './totalPrice.js';
 import {SERVER} from './server.js';
+import {renderDrawer} from './basket.js';
+
+
 const WR = document.querySelector('.wr');
+const MODAL_PUSH = document.querySelector('.drawer__push');
 
 
 //create cart
@@ -66,9 +70,34 @@ btn.forEach(item=>{
 		}else{
 			this.innerText = 'Додати в кошик';
 		}
+		
 	});
 })
 
+//push date 
 
 
+export const DRAWER_PUSH = document.querySelector('.drawer__btn');
 
+
+DRAWER_PUSH.addEventListener('click', ()=>{
+
+		localStorage.setItem('products', JSON.stringify([]));
+	
+		renderDrawer();
+		HeaderTotalPrice();
+		btn.forEach(el=>{
+			el.classList.remove('active');
+			el.innerHTML = 'Додати в кошик';
+		});
+
+		 
+		DRAWER_WR.classList.remove('active');
+		MODAL_PUSH.classList.add('active');
+
+});
+
+MODAL_PUSH.addEventListener('click', function(){
+		this.classList.remove('active');
+		
+})
