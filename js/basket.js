@@ -4,7 +4,7 @@ import {DRAWER_PUSH} from './index.js';
 import {SERVER} from  './server.js';
 import {HeaderTotalPrice} from './totalPrice.js';
 
-//localStorage.clear();
+
 
 
 let x = JSON.parse(localStorage.getItem('products'));
@@ -78,7 +78,9 @@ export function renderDrawer(){
 		if(arr.length > 0){
 			DRAWER_PUSH.removeAttribute('disabled');
 			let allItemsDrawer = '';
-			
+
+
+
 			arr.forEach(id=>{
 				allItemsDrawer += `
 				<div class="drawer__item">
@@ -96,8 +98,7 @@ export function renderDrawer(){
 			});	
 
 			DRAWER_INSERT.innerHTML = allItemsDrawer;
-			
-			
+				
 		}
 		
 		

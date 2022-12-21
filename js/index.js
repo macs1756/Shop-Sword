@@ -89,6 +89,7 @@ DRAWER_PUSH.addEventListener('click', ()=>{
 		btn.forEach(el=>{
 			el.classList.remove('active');
 			el.innerHTML = 'Додати в кошик';
+			
 		});
 
 		 
